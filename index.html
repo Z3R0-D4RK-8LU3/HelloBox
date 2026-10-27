@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelloBox — Surat Kecil, Kesan Besar</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+    <div class="sky-scene" aria-hidden="true">
+        <div class="sun"></div>
+        <div class="moon"></div>
+        <div class="cloud cloud-one"></div>
+        <div class="cloud cloud-two"></div>
+        <div class="cloud cloud-three"></div>
+        <span class="sky-star"></span>
+        <span class="sky-star"></span>
+        <span class="sky-star"></span>
+        <span class="sky-star"></span>
+        <span class="sky-star"></span>
+        <span class="sky-star"></span>
+        <span class="sky-star"></span>
+        <span class="sky-star"></span>
+    </div>
+
+    <!-- ================= KONTANER UTAMA 3D FLIP AUTH ================= -->
+    <div class="auth-page" id="authPage">
+        <div class="flip-card-inner" id="cardInner">
+            
+            <!-- SISI DEPAN: FORM SIGN IN -->
+            <div class="auth-card front-side">
+                <img src="https://i.postimg.cc/vTDb0tyN/Hello-Box-Mail-Logo.png" alt="HelloBox" class="auth-logo">
+                <h2>Sign In to HelloBox</h2>
+                <div class="input-group">
+                    <input type="email" placeholder="Email Address" class="emailInput">
+                    <div class="password-field">
+                        <input type="password" placeholder="Password" class="passInput">
+                        <button type="button" class="toggle-password" onclick="togglePassword(this)" aria-label="Tampilkan password" aria-pressed="false">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <line class="eye-slash" x1="3" y1="3" x2="21" y2="21"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <button class="button main-auth-btn" onclick="prosesAuth(this)">Sign In</button>
+                <p class="auth-switch-text">
+                    Don't have an account?
+                    <button type="button" class="auth-switch-link" onclick="putarKartu()">Register</button>
+                </p>
+            </div>
+
+            <!-- SISI BELAKANG: FORM SIGN UP -->
+            <div class="auth-card back-side">
+                <img src="https://i.postimg.cc/vTDb0tyN/Hello-Box-Mail-Logo.png" alt="HelloBox" class="auth-logo">
+                <h2>Register to HelloBox</h2>
+                <div class="input-group">
+                    <input type="text" placeholder="Full Name">
+                    <input type="email" placeholder="Email Address" class="emailInput">
+                    <div class="password-field">
+                        <input type="password" placeholder="Create Password" class="passInput">
+                        <button type="button" class="toggle-password" onclick="togglePassword(this)" aria-label="Tampilkan password" aria-pressed="false">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <line class="eye-slash" x1="3" y1="3" x2="21" y2="21"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="password-field">
+                        <input type="password" placeholder="Confirm Password" class="passInput">
+                        <button type="button" class="toggle-password" onclick="togglePassword(this)" aria-label="Tampilkan password" aria-pressed="false">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <line class="eye-slash" x1="3" y1="3" x2="21" y2="21"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <button class="button main-auth-btn" onclick="prosesAuth(this)">Register</button>
+                <p class="auth-switch-text">
+                    Already have an account?
+                    <button type="button" class="auth-switch-link" onclick="putarKartu()">Sign In</button>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ================= HALAMAN UTAMA (HOMEPAGE) ================= -->
+    <div class="homepage" id="homepageArea">
+        <h1 class="brand-box">
+            <!-- LINK YANG SUDAH DIPASTIKAN 100% COCOK DENGAN MILIKMU -->
+            <img src="https://i.postimg.cc/vTDb0tyN/Hello-Box-Mail-Logo.png" alt="Logo" class="logo-img">
+            HelloBox
+        </h1>
+
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch">
+                <input type="checkbox" id="checkboxMode" onclick="ubahTema()">
+                <div class="slider" id="wadahSlider">
+                    <span class="slider-circle"></span>
+                    <span class="switch-cloud c1"></span>
+                    <span class="switch-cloud c2"></span>
+                    <span class="switch-star s1"></span>
+                    <span class="switch-star s2"></span>
+                </div>
+            </label>
+        </div>
+
+        <div class="home-intro">
+            <span class="home-eyebrow">A LITTLE SPACE FOR BIG FEELINGS</span>
+            <h2>Surat kecil, kesan yang besar.</h2>
+            <p>Tulis pesan dari hati dan tinggalkan sedikit kehangatan di mailbox.</p>
+        </div>
+
+        <div class="container">
+            <input id="namaPengirim" type="text" maxlength="50" placeholder="Nama pengirim (opsional)">
+            <textarea id="inputPesan" maxlength="1000" placeholder="Ketik suratmu di sini..."></textarea>
+            <span id="charCount" style="font-size: 12px; color: #888; text-align: right; margin-top: -10px;">0 / 1000</span>
+            <button id="tombol" class="button" onclick="kirimPesan()">Kirim Surat</button>
+        </div>
+
+        <section class="mailbox-board" aria-labelledby="mailboxTitle">
+            <h2 id="mailboxTitle">Mail Surat</h2>
+            <p class="mailbox-note">Surat tersimpan di browser ini dan dapat dilihat oleh siapa pun yang membuka halaman ini di perangkat yang sama.</p>
+            <div id="daftarSurat" class="mail-list" aria-live="polite"></div>
+        </section>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
